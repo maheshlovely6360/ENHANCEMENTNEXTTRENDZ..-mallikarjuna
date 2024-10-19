@@ -15,16 +15,16 @@ const CartItem = props => (
       } = value
       const {cartItemDetails} = props
       const {id, title, brand, quantity, price, imageUrl} = cartItemDetails
-      const onClickDecrement = () => {
-        decrementCartItemQuantity(id)
+      const onRemoveCartItem = () => {
+        removeCartItem(id)
       }
 
-      const onClickIncrement = () => {
+      const onIncrementCartItemQty = () => {
         incrementCartItemQuantity(id)
       }
 
-      const onRemoveCartItem = () => {
-        removeCartItem(id)
+      const onDecrementCartItemQty = () => {
+        decrementCartItemQuantity(id)
       }
 
       return (
@@ -40,8 +40,8 @@ const CartItem = props => (
                 type="button"
                 className="quantity-controller-button"
                 aria-label="Mute volume"
+                onClick={onDecrementCartItemQty}
                 data-testid="minus"
-                onClick={onClickDecrement}
               >
                 <BsDashSquare color="#52606D" size={12} />
               </button>
@@ -50,8 +50,8 @@ const CartItem = props => (
                 type="button"
                 className="quantity-controller-button"
                 aria-label="Mute volume"
+                onClick={onIncrementCartItemQty}
                 data-testid="plus"
-                onClick={onClickIncrement}
               >
                 <BsPlusSquare color="#52606D" size={12} />
               </button>
@@ -70,9 +70,9 @@ const CartItem = props => (
           <button
             className="delete-button"
             type="button"
-            aria-label="Mute volume"
-            onClick={onRemoveCartItem}
             data-testid="remove"
+            aria-label="Mute volume" // Check this
+            onClick={onRemoveCartItem}
           >
             <AiFillCloseCircle color="#616E7C" size={20} />
           </button>
